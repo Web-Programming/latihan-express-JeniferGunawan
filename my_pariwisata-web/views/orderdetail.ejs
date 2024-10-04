@@ -1,0 +1,9 @@
+<% 
+const content = `
+    <h2>Detail Order</h2>
+    <p>Nama: <%= nama %></p>
+    <p>Paket yang dipilih: <%= paket %></p>
+    <a href="/" class="btn btn-primary">Kembali ke Home</a>
+`;
+%>
+<%- include('master', { title: 'Detail Order', body: content }) %>

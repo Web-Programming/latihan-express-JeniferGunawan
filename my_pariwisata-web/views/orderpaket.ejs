@@ -1,0 +1,29 @@
+<% 
+const content = `
+    <h2>Form Order Paket Wisata</h2>
+    <form action="/orderdetail" method="POST">
+        <div class="mb-3">
+            <label for="nama" class="form-label">Nama:</label>
+            <input type="text" id="nama" name="nama" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="alamat" class="form-label">Alamat:</label>
+            <input type="text" id="alamat" name="alamat" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="telepon" class="form-label">Nomor Telepon:</label>
+            <input type="tel" id="telepon" name="telepon" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="paket" class="form-label">Pilih Paket:</label>
+            <select id="paket" name="paket" class="form-select">
+                <option value="Paket 1">Paket 1</option>
+                <option value="Paket 2">Paket 2</option>
+                <option value="Paket 3">Paket 3</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Pesan</button>
+    </form>
+`;
+%>
+<%- include('master', { title: 'Order Paket Wisata', body: content }) %>
