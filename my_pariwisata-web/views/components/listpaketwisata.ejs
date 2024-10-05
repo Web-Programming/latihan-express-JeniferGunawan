@@ -1,0 +1,96 @@
+<h1>Paket Wisata Bandung</h1>
+<div class="container">
+    <p>Temukan pengalaman liburan terbaik dengan paket wisata kami di Bandung!</p>
+    <ul class="list-group list-group-horizontal-md">
+        <li class="list-group-item">
+            <h5>Paket Eksplorasi Alam Bandung</h5>
+            <p><b>Harga Paket</b><br>Rp 2.700.000 / orang</p>
+            <div class="infoSelengkapnya" style="color: blue; cursor: pointer;" onclick="toggleInfo(this)">
+                Klik disini untuk informasi selengkapnya
+            </div>
+            <p id="infoPaket1" class="informasi" style="display: none;">
+                <b>Durasi :</b> 3 hari 2 malam<br>
+                <b>Wisata :</b> Gedung Sate - Tangkuban Perahu - Kawah Putih - Braga Street - Museum Geologi - Alun-alun Bandung<br>
+                <b>Harga termasuk penginapan hotel</b>
+            </p>
+        </li>
+        <li class="list-group-item">
+            <h5>Paket Heritage Bandung</h5>
+            <p><b>Harga Paket</b><br>Rp 2.500.000 / orang</p>
+            <div class="infoSelengkapnya" style="color: blue; cursor: pointer;" onclick="toggleInfo(this)">
+                Klik disini untuk informasi selengkapnya
+            </div>
+            <p id="infoPaket2" class="informasi" style="display: none;">
+                <b>Durasi :</b> 2 hari<br>
+                <b>Wisata :</b> Jalan Asia Afrika - Alun-alun Bandung - Gedung Merdeka - Taman Hutan Raya Ir. H. Djuanda<br>
+                <b>Restoran :</b> Kampung Daun - The Valley - Paskal Food Market<br>
+                <b>Harga termasuk penginapan hotel</b>
+            </p>
+        </li>
+        <li class="list-group-item">
+            <h5>Paket Petualangan Lembang</h5>
+            <p><b>Harga Paket</b><br>Rp 4.500.000 / orang</p>
+            <div class="infoSelengkapnya" style="color: blue; cursor: pointer;" onclick="toggleInfo(this)">
+                Klik disini untuk informasi selengkapnya
+            </div>
+            <p id="infoPaket3" class="informasi" style="display: none;">
+                <b>Durasi :</b> 3 hari 2 malam<br>
+                <b>Wisata :</b> Kawah Putih - Situ Patenggang - Jalan Riau - Museum Geologi<br>
+                <b>Lunch :</b> All You Can Eat<br>
+                <b>Harga termasuk hotel bintang 5 + breakfast, tour guide, transportasi</b>
+            </p>
+        </li>
+        <li class="list-group-item">
+            <h5>Paket Kuliner Bandung</h5>
+            <p><b>Harga Paket</b><br>Rp 4.000.000 / orang</p>
+            <div class="infoSelengkapnya" style="color: blue; cursor: pointer;" onclick="toggleInfo(this)">
+                Klik disini untuk informasi selengkapnya
+            </div>
+            <p id="infoPaket4" class="informasi" style="display: none;">
+                <b>Durasi :</b> 3 hari 2 malam<br>
+                <b>Wisata :</b> Dago Pakar - Lembang - Farmhouse - Tangkuban Perahu - Maribaya<br>
+                <b>Lunch :</b> All You Can Eat<br>
+                <b>Harga termasuk hotel bintang 4 + breakfast</b>
+            </p>
+        </li>
+        <li class="list-group-item">
+            <h5>Paket Wisata Keluarga Bandung</h5>
+            <p><b>Harga Paket</b><br>Rp 3.000.000 / orang</p>
+            <div class="infoSelengkapnya" style="color: blue; cursor: pointer;" onclick="toggleInfo(this)">
+                Klik disini untuk informasi selengkapnya
+            </div>
+            <p id="infoPaket5" class="informasi" style="display: none;">
+                <b>Durasi :</b> 3 hari 2 malam<br>
+                <b>Wisata :</b> Taman Hutan Raya Ir. H. Djuanda - Cihampelas Walk - Floating Market Lembang - Tebing Keraton<br>
+                <b>Harga termasuk penginapan hotel + breakfast</b>
+            </p>
+        </li>
+        <li class="list-group-item">
+            <h5>Paket Bandung Adventure</h5>
+            <p><b>Harga Paket</b><br>Rp 3.500.000 / orang</p>
+            <div class="infoSelengkapnya" style="color: blue; cursor: pointer;" onclick="toggleInfo(this)">
+                Klik disini untuk informasi selengkapnya
+            </div>
+            <p id="infoPaket6" class="informasi" style="display: none;">
+                <b>Durasi :</b> 3 hari 2 malam<br>
+                <b>Wisata dan Kuliner :</b> Trans Studio Bandung - Cihampelas Walk - Maja House - Batagor Kingsley - Sate Hadori<br>
+                <b>Harga termasuk hotel + breakfast</b>
+            </p>
+        </li>
+    </ul>
+
+    <div class="mt-4">
+        <% listpaketwisata.forEach(paket => { %>
+            <li>
+              <%= paket.nama %> : Rp <%= paket.harga %>
+            </li>
+        <% }) %>
+    </div>
+</div>
+
+<script>
+    function toggleInfo(element) {
+        const info = element.nextElementSibling;
+        info.style.display = info.style.display === "none" ? "block" : "none";
+    }
+</script>

@@ -1,0 +1,22 @@
+<h1>Detail Order</h1><br>
+<h5>Anda mengorder  
+<% if (orderDetails.selectPaketWisata === 'paket1') { %>
+    Paket Eksplorasi Alam Bandung
+<% } else if (orderDetails.selectPaketWisata === 'paket2') { %>
+    Paket Heritage Bandung
+<% } else if (orderDetails.selectPaketWisata === 'paket3') { %>
+    Paket Petualangan Lembang
+<% } else if (orderDetails.selectPaketWisata === 'paket4') { %>
+    Paket Kuliner Bandung
+<% } else if (orderDetails.selectPaketWisata === 'paket5') { %>
+    Paket Wisata Keluarga Bandung
+<% } else { %>
+    Paket Bandung Adventure
+<% } %>
+</h5>
+<h6>Nama : <%= orderDetails.nama %></h6>
+<h6>Email : <%= orderDetails.email %></h6>
+<h6>Jumlah paket : <%= orderDetails.jumlah %></h6>
+<h5>Total Harga : Rp <%= orderDetails.hargaTotal %></h5><br><br>
+<h6>Terima kasih sudah mengorder paket wisata di website Pariwisata Bandung!</h6>
+<a href="/paketwisata">Kembali ke Halaman Paket Wisata</a>

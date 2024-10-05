@@ -1,29 +1,69 @@
-<% 
-const content = `
-    <h2>Form Order Paket Wisata</h2>
-    <form action="/orderdetail" method="POST">
-        <div class="mb-3">
-            <label for="nama" class="form-label">Nama:</label>
-            <input type="text" id="nama" name="nama" class="form-control" required>
-        </div>
-        <div class="mb-3">
-            <label for="alamat" class="form-label">Alamat:</label>
-            <input type="text" id="alamat" name="alamat" class="form-control" required>
-        </div>
-        <div class="mb-3">
-            <label for="telepon" class="form-label">Nomor Telepon:</label>
-            <input type="tel" id="telepon" name="telepon" class="form-control" required>
-        </div>
-        <div class="mb-3">
-            <label for="paket" class="form-label">Pilih Paket:</label>
-            <select id="paket" name="paket" class="form-select">
-                <option value="Paket 1">Paket 1</option>
-                <option value="Paket 2">Paket 2</option>
-                <option value="Paket 3">Paket 3</option>
-            </select>
-        </div>
-        <button type="submit" class="btn btn-primary">Pesan</button>
+<%- include('master', 
+  {
+    title: title,
+    body: `
+    <h1>Form Order Paket Wisata Bandung</h1>
+    <form action="/orderdetail" oninput="hitungTotalHarga()" method="POST">
+      <div class="mb-3">
+        <label for="nama" class="form-label">Nama</label>
+        <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama Anda" required>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan email Anda" required>
+      </div>
+      <div class="mb-3">
+        <label for="selectPaketWisata" class="form-label">Paket Wisata</label>
+        <select class="form-select" id="selectPaketWisata" name="selectPaketWisata" aria-label="Default select example" onchange="hitungTotalHarga()">
+          <option value="" data-harga="0">Pilih Paket Wisata</option>
+          <option value="paket1" data-harga="2700000">Paket Eksplorasi Alam Bandung</option>
+          <option value="paket2" data-harga="2500000">Paket Heritage Bandung</option>
+          <option value="paket3" data-harga="4500000">Paket Petualangan Lembang</option>
+          <option value="paket4" data-harga="4000000">Paket Kuliner Bandung</option>
+          <option value="paket5" data-harga="3000000">Paket Wisata Keluarga Bandung</option>
+          <option value="paket6" data-harga="3500000">Paket Bandung Adventure</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="jumlah" class="form-label">Jumlah</label>
+        <input type="number" class="form-control" id="jumlah" name="jumlah" placeholder="Masukkan jumlah paket yang ingin dipesan" required min="1" oninput="hitungTotalHarga()">
+      </div>
+      <div class="mb-3">
+        <label for="harga" class="form-label">Harga per Orang</label>
+        <input type="text" class="form-control" id="harga" name="harga" readonly>
+      </div>
+      <div class="mb-3">
+        <label for="hargaTotal" class="form-label">Total Harga</label>
+        <input type="text" class="form-control" id="hargaTotal" name="hargaTotal" readonly>
+      </div>
+      <div class="mb-3">
+        <button type="submit" class="btn btn-outline-dark">Order Paket dan Lihat Detail Order</button><br><br>
+      </div>
     </form>
-`;
+
+    <script>
+      function formatRupiah(angka) {
+        const formatter = new Intl.NumberFormat('id-ID');
+        return formatter.format(angka);
+      }
+
+      function hitungTotalHarga() {
+        const selectPaket = document.getElementById('selectPaketWisata');
+        const hargaPerOrangInput = document.getElementById('harga');
+        const totalHargaInput = document.getElementById('hargaTotal');
+        const jumlahInput = document.getElementById('jumlah');
+
+        const selectedOption = selectPaket.options[selectPaket.selectedIndex];
+        const hargaPerOrang = parseInt(selectedOption.getAttribute('data-harga')) || 0;
+        const jumlah = parseInt(jumlahInput.value) || 0;
+
+        const totalHarga = hargaPerOrang * jumlah;
+
+        hargaPerOrangInput.value = formatRupiah(hargaPerOrang);
+        totalHargaInput.value = formatRupiah(totalHarga);
+      }
+    </script>
+    `
+  })
 %>
-<%- include('master', { title: 'Order Paket Wisata', body: content }) %>
+

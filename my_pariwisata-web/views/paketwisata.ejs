@@ -1,36 +1,6 @@
-<% 
-const content = `
-    <h2>Daftar Paket Wisata</h2>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Nama Paket</th>
-                <th>Kota</th>
-                <th>Harga</th>
-                <th>Durasi</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Paket 1</td>
-                <td>Surabaya</td>
-                <td>Rp 5.000.000</td>
-                <td>3 Hari 2 Malam</td>
-            </tr>
-            <tr>
-              <td>Paket 2</td>
-              <td>Lampung</td>
-              <td>Rp 1.500.000</td>
-              <td>2 Hari 1 Malam</td>
-            </tr>
-            <tr>
-              <td>Paket 3</td>
-              <td>Yogyakarta</td>
-              <td>Rp 5.00.000</td>
-              <td>4 Hari 3 Malam</td>
-            </tr>
-        </tbody>
-    </table>
-`;
-%>
-<%- include('master', { title: 'Paket Wisata', body: content }) %>
+<%- include('master', 
+  {
+    title: title,
+    body: include('components/listpaketwisata')
+  })
+-%>
