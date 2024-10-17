@@ -2,7 +2,7 @@ let mongoose=require("mongoose")
 let dbURL = "mongodb://localhost:27017"
 
 mongoose.connect(dbURL,{
-   useNewURLParser: true
+   //useNewURLParser: true
 });
 
 mongoose.connection.on("connected",() => {
