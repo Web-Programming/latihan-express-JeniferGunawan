@@ -1,6 +1,6 @@
 const Mahasiswa = require("../models/mahasiswa");
 
-exports.Index = async (req, res) => {
+const Index = async (req, res) => {
     try {
         // Mencari data mahasiswa
         const mahasiswas = await Mahasiswa.find({});
@@ -15,3 +15,5 @@ exports.Index = async (req, res) => {
         res.status(500).json({ message: "Error retrieving users", error });
     }
 }
+
+module.exports = {Index}
