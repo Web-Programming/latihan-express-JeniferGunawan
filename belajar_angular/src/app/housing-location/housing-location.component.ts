@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
       <img class="Listing-photo" [src]="housingLocation.photo" alt="Exterior photo of {{ housingLocation.name }}">
       <h2 class="Listing-heading">{{ housingLocation.name }}</h2>
       <p class="Listing-location">{{ housingLocation.city }}, {{ housingLocation.state }} </p>
-      <a routerLink="/details">Show More</a>
+      <a [routerLink]="['/details', housingLocation.id]">Show More</a>
     </section>
   `,
   styleUrl: './housing-location.component.css'
