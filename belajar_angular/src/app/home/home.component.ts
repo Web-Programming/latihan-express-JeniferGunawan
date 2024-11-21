@@ -9,14 +9,14 @@ import { HousingService } from '../housing.service';
   standalone: true,
   imports: [CommonModule, HousingLocationComponent],
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  housingLocationList : HousingLocation[] = [];
-  housingService : HousingService = inject(HousingService);
-
+  housingLocationList: HousingLocation[] = [];
+  housingService: HousingService = inject(HousingService);
+  
   constructor(){
     this.housingLocationList = this.housingService.getAllHousingLocations();
   }
-} 
+}
 
