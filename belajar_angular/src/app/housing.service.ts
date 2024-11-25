@@ -5,57 +5,18 @@ import { HousingLocation } from './housing-location';
   providedIn: 'root'
 })
 export class HousingService {
-  readonly baseUrl = 'https://angular.io/assets/images/tutorials/faa';
-  protected housingLocationList: HousingLocation[] = [
-    {
-      id: 0,
-      name: 'Acme Fresh Start Housing',
-      city: 'Chicago',
-      state: 'IL',
-      photo: `${this.baseUrl}/bernard-hermant-CLKGGwIBTaY-unsplash.jpg`,
-      availableUnits: 4,
-      wifi: true,
-      laundry: true
-    },
-    {
-      id: 1,
-      name: 'A113 Transitional Housing',
-      city: 'Santa Monica',
-      state: 'CA',
-      photo: `${this.baseUrl}/brandon-griggs-wR11KBaB86U-unsplash.jpg`,
-      availableUnits: 0,
-      wifi: false,
-      laundry: true
-    },
-    {
-      id: 2,
-      name: 'Warm Beds Housing Support',
-      city: 'Juneau',
-      state: 'AK',
-      photo: `${this.baseUrl}/i-do-nothing-but-love-lAyXdl1-Wmc-unsplash.jpg`,
-      availableUnits: 1,
-      wifi: false,
-      laundry: false
-    },
-    {
-      id: 3,
-      name: 'Homesteady Housing',
-      city: 'Chicago',
-      state: 'IL',
-      photo: `${this.baseUrl}/ian-macdonald-W8z6aiwfi1E-unsplash.jpg`,
-      availableUnits: 1,
-      wifi: true,
-      laundry: false
-    },
-  ];
+  url = "http://localhost:3000/housing";
+
   constructor() { }
 
-  getAllHousingLocations() : HousingLocation[]{
-    return this.housingLocationList;
+  async getAllHousingLocations() : Promise <HousingLocation[]>{
+    const data = await fetch (this.url);
+    return await data.json () ?? [];
   }
-  getHousingLocationById(id: Number) : HousingLocation | undefined{
-    return this.housingLocationList.find(housingLocation => 
-      housingLocation.id == id);
+
+  async getHousingLocationById(id: Number) : Promise<HousingLocation | undefined>{
+    const data = await fetch (`${this.url}/${id}`); //http://localhost:3000/housing/1
+    return await data.json () ?? [];
   }
 
   submitApplication(firstName: String, lastName: String, 
