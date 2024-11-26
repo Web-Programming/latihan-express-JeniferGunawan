@@ -20,7 +20,7 @@ export class HomeComponent {
     .then((listData: HousingLocation[]) =>{
       this.housingLocationList = listData;
     });
-  
+
   }
 }
 
