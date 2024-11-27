@@ -9,14 +9,14 @@ export class HousingService {
 
   constructor() { }
 
-  async getAllHousingLocations() : Promise <HousingLocation[]>{
-    const data = await fetch (this.url);
-    return await data.json () ?? [];
+  async getAllHousingLocations() : Promise<HousingLocation[]>{
+    const data = await fetch(this.url);
+    return await data.json() ?? [];
   }
 
   async getHousingLocationById(id: Number) : Promise<HousingLocation | undefined>{
-    const data = await fetch (`${this.url}/${id}`); //http://localhost:3000/housing/1
-    return await data.json () ?? [];
+    const data = await fetch(`${this.url}/${id}`); //http://localhost:3000/housing/1
+    return await data.json() ?? {};
   }
 
   submitApplication(firstName: String, lastName: String, 

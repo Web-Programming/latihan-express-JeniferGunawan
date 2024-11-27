@@ -59,7 +59,7 @@ export class DetailsComponent {
       .then(location => {
         this.housingLocation = location;
       })
-      console.table (this.housingLocation)
+    console.table(this.housingLocation)
   }
 
   submitApplyForm(){
