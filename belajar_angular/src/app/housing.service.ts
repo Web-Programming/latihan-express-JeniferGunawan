@@ -9,18 +9,49 @@ export class HousingService {
 
   constructor() { }
 
-  async getAllHousingLocations() : Promise<HousingLocation[]>{
+  // Mendapatkan semua lokasi perumahan
+  async getAllHousingLocations(): Promise<HousingLocation[]> {
     const data = await fetch(this.url);
     return await data.json() ?? [];
   }
 
-  async getHousingLocationById(id: Number) : Promise<HousingLocation | undefined>{
-    const data = await fetch(`${this.url}/${id}`); //http://localhost:3000/housing/1
+  // Mendapatkan lokasi perumahan berdasarkan ID
+  async getHousingLocationById(id: Number): Promise<HousingLocation | undefined> {
+    const data = await fetch(`${this.url}/${id}`); // http://localhost:3000/housing/1
     return await data.json() ?? {};
   }
 
-  submitApplication(firstName: String, lastName: String, 
-    email: String){
-      console.log(firstName, lastName, email);
+  // Mengirim aplikasi untuk perumahan
+  async submitApplication(firstName: String, lastName: String, email: String): Promise<any> {
+    const apiurl = "http://localhost:3000/register";;
+
+    try {
+      const response = await fetch(apiurl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+        }),
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Gagal mengirim aplikasi');
+      }
+
+      const result = await response.json();
+      console.log('Application submitted successfully:', result);
+    
+      return result;
+    } catch (error: any) {
+      console.error('Error during application submission:', error);
+      
+      throw error;
+    }
   }
 }
+

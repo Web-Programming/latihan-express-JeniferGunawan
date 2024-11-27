@@ -53,6 +53,7 @@ export class DetailsComponent {
     email: new FormControl('')
   })
 
+
   constructor(){
     this.housingLocationId = Number(this.route.snapshot.params['id']);
     this.housingService.getHousingLocationById(this.housingLocationId)
@@ -63,6 +64,9 @@ export class DetailsComponent {
   }
 
   submitApplyForm(){
+    //alert("Hallo You Submit A Form");
+    //alert("Full Name: " + this.applyForm.value.firstName + " " + this.applyForm.value.lastName);
+
     //panggil API simpan data registarsi via service
     this.housingService.submitApplication(
       this.applyForm.value.firstName ?? '',
@@ -70,4 +74,6 @@ export class DetailsComponent {
       this.applyForm.value.email ?? '',
     )
   }
+
+readonly baseUrl = 'https://angular.io/assets/images/tutorials/faa';
 }

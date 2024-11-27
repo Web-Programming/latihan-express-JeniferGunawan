@@ -1,9 +1,9 @@
 // routes/registerRoutes.js
 const express = require('express');
 const router = express.Router();
-const registerController = require('../controllers/controllerRegistrasi');
+const registrasiController = require('../controllers/controllerRegistrasi');
 
 // Route untuk menyimpan data registrasi
-router.post('/register', registerController.insert);
+router.post('/', registrasiController.insert);
 
 module.exports = router;

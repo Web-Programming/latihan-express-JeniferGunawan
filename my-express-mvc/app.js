@@ -10,7 +10,7 @@ var indexRouter = require('./app_server/routes/index');
 var usersRouter = require('./app_server/routes/users');
 var mahasiswasRouter = require ('./app_server/routes/mahasiswas');
 var housingRouter = require('./app_server/routes/housing');
-var registerRoutes = require('./routes/register');
+var registerRoutes = require('./app_server/routes/register');
 
 var app = express();
 
