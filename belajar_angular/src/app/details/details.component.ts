@@ -10,8 +10,8 @@ import { FormGroup, FormControl, ReactiveFormsModule  } from '@angular/forms';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   template: `
-     <article >
-      <img class="listing-photo" [src]="housingLocation?.photo"
+      <article >
+      <img class="listing-photo" [src]="baseUrl + housingLocation?.photo"
         alt="Exterior photo of {{housingLocation?.name}}"/>
       <section class="listing-description">
         <h2 class="listing-heading">{{housingLocation?.name}}</h2>
@@ -34,7 +34,7 @@ import { FormGroup, FormControl, ReactiveFormsModule  } from '@angular/forms';
           <input type="text" id="last-name" formControlName="lastName" placeholder="Input last name">
           
           <label for="email">Email</label>
-          <input type="email" id="email" formControlName="email" placeholder="Input email">
+          <input type="text" id="email" formControlName="email" placeholder="Input email">
           <button type="submit" class="primary">Apply</button>
         </form>
       </section>

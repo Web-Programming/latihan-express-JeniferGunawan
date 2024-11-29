@@ -6,24 +6,41 @@ import { HousingLocation } from './housing-location';
 })
 export class HousingService {
   url = "http://localhost:3000/housing";
+  readonly baseUrl = 'https://angular.io/assets/images/tutorials/faa';
 
   constructor() { }
 
   // Mendapatkan semua lokasi perumahan
   async getAllHousingLocations(): Promise<HousingLocation[]> {
-    const data = await fetch(this.url);
-    return await data.json() ?? [];
+    try {
+      const response = await fetch(this.url);
+      if (!response.ok) {
+        throw new Error('Gagal mendapatkan data lokasi perumahan');
+      }
+      return await response.json();
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
   }
 
   // Mendapatkan lokasi perumahan berdasarkan ID
-  async getHousingLocationById(id: Number): Promise<HousingLocation | undefined> {
-    const data = await fetch(`${this.url}/${id}`); // http://localhost:3000/housing/1
-    return await data.json() ?? {};
+  async getHousingLocationById(id: number): Promise<HousingLocation | undefined> {
+    try {
+      const response = await fetch(`${this.url}/${id}`); // http://localhost:3000/housing/1
+      if (!response.ok) {
+        throw new Error(`Gagal mendapatkan lokasi perumahan dengan ID ${id}`);
+      }
+      return await response.json();
+    } catch (error) {
+      console.error(error);
+      return undefined;
+    }
   }
 
   // Mengirim aplikasi untuk perumahan
-  async submitApplication(firstName: String, lastName: String, email: String): Promise<any> {
-    const apiurl = "http://localhost:3000/register";;
+  async submitApplication(firstName: string, lastName: string, email: string): Promise<void> {
+    const apiurl = "http://localhost:3000/register";
 
     try {
       const response = await fetch(apiurl, {
@@ -39,18 +56,13 @@ export class HousingService {
       });
 
       if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.message || 'Gagal mengirim aplikasi');
+        throw new Error('Gagal mengirim aplikasi');
       }
 
-      const result = await response.json();
-      console.log('Application submitted successfully:', result);
-    
-      return result;
-    } catch (error: any) {
-      console.error('Error during application submission:', error);
-      
-      throw error;
+      alert('Aplikasi berhasil dikirim');
+    } catch (error) {
+      console.error(error);
+      alert('Terjadi kesalahan saat mengirim aplikasi');
     }
   }
 }
