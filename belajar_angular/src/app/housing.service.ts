@@ -7,63 +7,40 @@ import { HousingLocation } from './housing-location';
 export class HousingService {
   url = "http://localhost:3000/housing";
   readonly baseUrl = 'https://angular.io/assets/images/tutorials/faa';
-
+  
   constructor() { }
 
-  // Mendapatkan semua lokasi perumahan
-  async getAllHousingLocations(): Promise<HousingLocation[]> {
-    try {
-      const response = await fetch(this.url);
-      if (!response.ok) {
-        throw new Error('Gagal mendapatkan data lokasi perumahan');
-      }
-      return await response.json();
-    } catch (error) {
-      console.error(error);
-      return [];
-    }
+  async getAllHousingLocations() : Promise<HousingLocation[]>{
+    const data = await fetch(this.url);
+    return await data.json() ?? [];
   }
 
-  // Mendapatkan lokasi perumahan berdasarkan ID
-  async getHousingLocationById(id: number): Promise<HousingLocation | undefined> {
-    try {
-      const response = await fetch(`${this.url}/${id}`); // http://localhost:3000/housing/1
-      if (!response.ok) {
-        throw new Error(`Gagal mendapatkan lokasi perumahan dengan ID ${id}`);
-      }
-      return await response.json();
-    } catch (error) {
-      console.error(error);
-      return undefined;
-    }
+  async getHousingLocationById(id: Number) : Promise<HousingLocation | undefined>{
+    const data = await fetch(`${this.url}/${id}`); // http://localhost:3000/housing/1
+    return await data.json() ?? {};
   }
 
-  // Mengirim aplikasi untuk perumahan
-  async submitApplication(firstName: string, lastName: string, email: string): Promise<void> {
-    const apiurl = "http://localhost:3000/register";
-
-    try {
-      const response = await fetch(apiurl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          firstName: firstName,
-          lastName: lastName,
-          email: email,
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Gagal mengirim aplikasi');
+  submitApplication(firstName: String, lastName: String, email: String){
+    const apiurl = "http://localhost:3000/insert/register";
+    const data = fetch(apiurl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        firstname: firstName,
+        lastname: lastName,
+        email: email
+      })
+    });
+    return data.then(response => {
+      if(!response.ok){
+        throw new Error("Submit Application Failed");
+      }else{
+        alert("Submit Application Success");
       }
-
-      alert('Aplikasi berhasil dikirim');
-    } catch (error) {
-      console.error(error);
-      alert('Terjadi kesalahan saat mengirim aplikasi');
-    }
+      return response.json();
+    });
   }
 }
 
