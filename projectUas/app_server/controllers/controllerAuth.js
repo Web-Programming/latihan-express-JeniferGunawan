@@ -1,26 +1,13 @@
 const passport = require('passport');
-const User = require('../models/user');
-
-const login = (req, res, next) => {
-    if (!req.body.email || !req.body.password) {
-        return res.status(400).json({ "message": "All fields required" });
-    }
-    passport.authenticate('local', (err, user, info) => {
-        if (err) {
-            return res.status(404).json(err);
-        }
-        if (user) {
-            const token = user.generateJwt();
-            res.status(200).json({token});
-        } else {
-            res.status(401).json(info);
-        }
-    })(req, res, next);
-};
+const User = require("../models/user");
 
 const register = (req, res) => {
     if (!req.body.name || !req.body.email || !req.body.password) {
-        return res.status(400).json({"message": "All fields required"});
+        return res
+            .status(400)
+            .json({
+                "message": "All fields required"
+            });
     }
     const user = new User();
     user.name = req.body.name;
@@ -29,14 +16,50 @@ const register = (req, res) => {
     
     user.save()
         .then((result) => {
-            const token = user.generateJwt();
-            res.status(200).json({token});
+           const token = user.generateJwt();
+            res
+                .status(200)
+                .json({
+                    token
+                });
         })
         .catch((err) => {
-            res.status(400).json({
+            res
+                .status(400)
+                .json({
                     ... err,
                     "message": "User with the same username already registered"
                 });
         });
+};
+
+const login = (req, res, next) => {
+    if (!req.body.email || !req.body.password) {
+        return res
+            .status(400)
+            .json({
+                "message": "All fields required",
+                "data" : req.body
+            });
+    }
+    passport.authenticate('local', (err, user, info) => {
+        if (err) {
+            return res
+                .status(404)
+                .json(err);
+        }
+        if (user) {
+            const token = user.generateJwt();
+            res
+                .status(200)
+                .json({
+                    token
+                });
+        } else {
+            res
+                .status(401)
+                .json(info);
+        }
+    })(req, res, next);
 };
 module.exports = { register, login };
