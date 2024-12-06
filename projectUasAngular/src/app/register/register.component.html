@@ -1,6 +1,6 @@
 
 <section class="register">
-    <h1 class="auth-heading">Register to our platform</h1>
+    <h1 class="auth-heading">Register</h1>
     <div class="alert-danger" *ngIf="formError">{{formError}}</div>
     <form [formGroup]="registerForm" (ngSubmit)="submitRegister()">
       <label for="name">Name</label>
