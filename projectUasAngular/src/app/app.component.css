@@ -1,13 +1,7 @@
-/* Put these src/app/app.component.css */
-:host {
-    --content-padding: 10px;
-  }
-  header {
-    display: block;
-    height: 60px;
-    padding: var(--content-padding);
-    box-shadow: 0px 5px 25px var(--shadow-color);
-  }
-  .content {
-    padding: var(--content-padding);
-  }
+/* CSS untuk logo dengan URL tertentu */
+img[src="/img/logo.png"] {
+  height: 100px; /* Tinggi logo sesuai atribut HTML */
+  width: auto; /* Menjaga proporsi logo */
+  display: block; /* Memastikan logo tampil sebagai elemen blok */
+  margin: 50 30; /* Memusatkan logo secara horizontal */
+}
