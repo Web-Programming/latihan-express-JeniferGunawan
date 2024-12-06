@@ -12,9 +12,9 @@ var indexRouter = require('./app_server/routes/index');
 var usersRouter = require('./app_server/routes/users');
 var bukusRouter = require('./app_server/routes/bukus');
 
-//var cors = require('cors');
+var cors = require('cors');
 var app = express();
-//app.use(cors())
+app.use(cors())
 
 // view engine setup
 app.set('views', path.join(__dirname, 'app_server','views'));
@@ -27,7 +27,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //app.use((req, res, next) => {
- // res.setHeader("Access-Control-Allow-Origin", "*");
+ //res.setHeader("Access-Control-Allow-Origin", "*");
   //next();
 //});
 app.use('/', indexRouter);

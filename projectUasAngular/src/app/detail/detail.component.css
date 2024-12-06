@@ -1,0 +1,109 @@
+/* Styling untuk keseluruhan artikel */
+article {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Styling untuk gambar buku */
+  .listing-gambarSampul {
+    display: block;
+    max-width: 200px;
+    margin: 0 auto 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Heading utama */
+  .listing-heading {
+    font-size: 1.8rem;
+    text-align: center;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  /* Styling untuk informasi penulis dan deskripsi */
+  .listing-penulis,
+  section p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 8px;
+  }
+  
+  /* Heading untuk fitur buku dan aksi */
+  .section-heading {
+    font-size: 1.5rem;
+    color: #333;
+    margin: 20px 0 10px;
+  }
+  
+  /* List fitur buku */
+  .listing-features ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .listing-features li {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 6px;
+  }
+  
+  /* Styling tombol aksi */
+  button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button.primary {
+    background-color: #007bff;
+  }
+  
+  button.primary:hover {
+    background-color: #0056b3;
+  }
+  
+  button.secondary {
+    background-color: #6c757d;
+  }
+  
+  button.secondary:hover {
+    background-color: #5a6268;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  /* Responsiveness */
+  @media (max-width: 600px) {
+    article {
+      padding: 10px;
+    }
+  
+    .listing-gambarSampul {
+      max-width: 150px;
+    }
+  
+    .listing-heading {
+      font-size: 1.5rem;
+    }
+  
+    button {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+  
