@@ -2,32 +2,29 @@
 :host {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   height: 100vh;
-  background-color: #f7f7f7;
+  padding-top: 40px;
 }
 
 form {
   background-color: #ffffff;
-  padding: 20px;
+  padding: 60px;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
-  max-width: 320px;
+  max-width: 310px;
   width: 100%;
+  margin: 0 auto; 
 }
 
-h1 {
+h3 {
   font-size: 24px;
   margin-bottom: 16px;
+  text-align: center;
 }
 
-img {
-  width: 100px;
-  height: 100px;
-  margin: 0 auto 16px;
-  display: block;
-}
+
 
 label {
   display: block;
@@ -53,7 +50,7 @@ button {
   border-radius: 4px;
   font-size: 16px;
   cursor: pointer;
-  width: 100%;
+  width: 80%;
 }
 
 button:hover {

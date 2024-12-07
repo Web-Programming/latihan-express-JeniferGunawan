@@ -1,7 +1,17 @@
-/* CSS untuk logo dengan URL tertentu */
-img[src="/img/logo.png"] {
-  height: 100px; /* Tinggi logo sesuai atribut HTML */
-  width: auto; /* Menjaga proporsi logo */
-  display: block; /* Memastikan logo tampil sebagai elemen blok */
-  margin: 50 30; /* Memusatkan logo secara horizontal */
+.brand-logo {
+  height: 120px; /* Mengatur tinggi gambar */
+  width: 120px; /* Membuat lebar sama dengan tinggi untuk menjaga bentuk lingkaran */
+  display: block; /* Mengubah menjadi elemen blok */
+  margin: 30px auto 0; /* Menambahkan jarak di atas (margin-top) dan menjaga posisi horizontal */
+  border-radius: 50%; /* Membuat gambar berbentuk lingkaran */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan */
+  object-fit: cover; /* Memastikan isi gambar memenuhi lingkaran */
+}
+
+h1 {
+  font-size: 24px; /* Ukuran font untuk SIPERTAL */
+  font-weight: bold; /* Menebalkan teks */
+  margin-top: 20px;
+  margin-bottom: 10px; /* Memberikan jarak antara teks dan gambar logo */
+  text-align: center;
 }
